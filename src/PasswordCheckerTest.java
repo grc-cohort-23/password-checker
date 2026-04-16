@@ -16,7 +16,7 @@ public class PasswordCheckerTest {
   }
 
   @Test
-  public void verifyPassowrdMediumTest() {
+  public void verifyPasswordMediumTest() {
     PasswordChecker passwordUtils = new PasswordChecker(6, 12);
 
     String testPassword = "teamworkdrm";
