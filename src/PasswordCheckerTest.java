@@ -21,8 +21,15 @@ public class PasswordCheckerTest {
 
   @Test
   public void testAlphanumericEverywhere2(){
-    PasswordChecker checker = new PasswordChecker(0, 0);
+    PasswordChecker checker = new PasswordChecker(6, 12);
     boolean actual = checker.isAlphanumeric("works#");
+    assertEquals(false, actual);
+  }
+
+  @Test
+  public void testAlphanumericEverywhere3(){
+    PasswordChecker checker = new PasswordChecker(6, 12);
+    boolean actual = checker.isAlphanumeric("    ");
     assertEquals(false, actual);
   }
   
