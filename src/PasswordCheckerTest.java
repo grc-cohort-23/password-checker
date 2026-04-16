@@ -12,6 +12,7 @@ public class PasswordCheckerTest {
   }
 
   //describePasswordLength tests
+  
 
   //isAlphanumeric
 
