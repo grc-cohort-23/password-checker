@@ -85,6 +85,9 @@ public class PasswordChecker {
      * @return true if the password is banned, false otherwise
      */
     public boolean isBannedPassword(String password) {
+        if (password.trim().length() == 0) {
+            return false;
+        }
         return bannedPasswords.contains(password.toLowerCase());
     }
 

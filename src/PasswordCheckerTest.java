@@ -29,7 +29,7 @@ public class PasswordCheckerTest {
   @Test
   void testForLongPasswordLength() {
     PasswordChecker passwordUtils = new PasswordChecker(7, 14);
-    String actual = passwordUtils.describePasswordLength("seahawks12$12helloworld");
+    String actual = passwordUtils.describePasswordLength("seahawks1212helloworld");
     assertTrue(actual == "long");
   }
 
@@ -70,8 +70,15 @@ public class PasswordCheckerTest {
 
   @Test
   void testForNotBannedPasswords() {
-     PasswordChecker passwordUtils = new PasswordChecker(7, 14);
-     boolean actual = passwordUtils.isBannedPassword("helloworld");
-     assertTrue(actual == false);
+    PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+    boolean actual = passwordUtils.isBannedPassword("helloworld");
+    assertTrue(actual == false);
+  }
+
+  @Test
+  void testForEmptyStringForBannedPasswords() {
+    PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+    boolean actual = passwordUtils.isBannedPassword("     ");
+    assertTrue(actual == false);
   }
 }
