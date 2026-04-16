@@ -55,4 +55,27 @@ public class PasswordCheckerTest {
     assertEquals("long", actual);
   }
 
+  @Test
+  public void testIsValid1(){
+    PasswordChecker checker = new PasswordChecker(6, 12);
+    boolean actual = checker.isBannedPassword("Password123");
+    assertEquals(true, actual);
+  }
+
+  @Test
+  public void testIsValid2(){
+    PasswordChecker checker = new PasswordChecker(6, 12);
+    boolean actual = checker.isBannedPassword("leTmeiN");
+    assertEquals(true, actual);
+  }
+
+   @Test
+  public void testIsValid3(){
+    PasswordChecker checker = new PasswordChecker(6, 12);
+    boolean actual = checker.isBannedPassword("Valid");
+    assertEquals(false, actual);
+  }
+
+  
+
 }
