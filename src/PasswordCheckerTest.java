@@ -24,4 +24,11 @@ public class PasswordCheckerTest {
     String isEmpty = passcheck.describePasswordLength("");
     assertEquals("short", isEmpty);
   }
+
+  @Test
+  public void testIfPasswordContainsSymbol() {
+    PasswordChecker passcheck = new PasswordChecker(1, 2);
+    boolean isValid = passcheck.isAlphanumeric("asd$");
+    assertEquals(false, isValid);
+  }
 }
