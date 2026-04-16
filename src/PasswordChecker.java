@@ -46,7 +46,7 @@ public class PasswordChecker {
     public String describePasswordLength(String password) {
         int length = password.length();
 
-        if (length < shortThreshold) {
+        if (length < shortThreshold && length>0) {
             return "short";
         } else if (length < mediumThreshold) {
             return "medium";
