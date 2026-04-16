@@ -4,18 +4,10 @@ import org.junit.jupiter.api.Test;
 
 public class PasswordCheckerTest {
 
-  @Test
-  public void testDummy() {
-  }
-  // @Test
-  // public void testDummy() {
-  //   // This test is used only to validate that your VS Code setup is working
-  //   // Delete this test after you have written your other tests
-  //   assertEquals(0, 0);
-  // }
+ 
   //constructor 1: Test to see if password passes with spaces  | should not
 @Test 
-public void testPasswordWithSpaces() {
+public void testPasswordWithSpacesInBetween() {
   //arrange
     PasswordChecker checker = new PasswordChecker(8, 12);
     String password = "pass word";
@@ -23,7 +15,30 @@ public void testPasswordWithSpaces() {
     boolean result = checker.isAlphanumeric(password);
   //assert
     assertEquals(false, result);
+  
 }
+@Test
+public void testPasswordWithSpacesAtBeginning() {
+  //arrange
+    PasswordChecker checker = new PasswordChecker(8, 12);
+    String password = " pass";
+  //act
+    boolean result = checker.isAlphanumeric(password);
+  //assert
+    assertEquals(false, result);
+}
+@Test
+public void testPasswordWithSpacesAtEnd() {
+  //arrange
+    PasswordChecker checker = new PasswordChecker(8, 12);
+    String password = "password ";
+  //act
+    boolean result = checker.isAlphanumeric(password);
+  //assert
+    assertEquals(false, result);
+}
+
+// constructor 2: Test to see if password is banned | should be
 @Test
   public void TestForBannedPassword() {
     // arrange
