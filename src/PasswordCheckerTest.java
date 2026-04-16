@@ -39,7 +39,37 @@ public class PasswordCheckerTest {
 
 
   //describePasswordLength()
+  @Test
+  void testPasswordLengthIsDescribedAsShort(){
+    //arrange
+    PasswordChecker describe = new PasswordChecker(5, 9);
+    //act
+    String actual = describe.describePasswordLength("abs");
+    //assert
+    assertEquals("short", actual);
+  }
+
+  @Test
+  void testPasswordLengthIsDescribedAsMedium(){
+    //arrange
+    PasswordChecker describe = new PasswordChecker(5, 9);
+    //act
+    String actual = describe.describePasswordLength("mediUmm");
+    //assert
+    assertEquals("medium", actual);
+  }
+
+  @Test
+  void testPasswordLengthIsDescribedAsLong(){
+    //arrange
+    PasswordChecker describe = new PasswordChecker(5, 9);
+    //act
+    String actual = describe.describePasswordLength("thisisALongPassworddd");
+    //assert
+    assertEquals("long", actual);
+  }
 
   //isBannedPassword()
+
 
 }
