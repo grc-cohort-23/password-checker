@@ -46,9 +46,34 @@ public class PasswordCheckerTest {
     boolean specials = testCheck.isAlphanumeric("@!#%^&$*^#(@&)");
     boolean special = testCheck.isAlphanumeric("*");
     boolean space = testCheck.isAlphanumeric(" ");
+    boolean spaceLetters = testCheck.isAlphanumeric("s y");
 
     assertEquals(false, specials);
     assertEquals(false, special);
     assertEquals(false, space);
+    assertEquals(false, spaceLetters);
   }
+
+  @Test
+  public void testIsBannedPassword() {
+    PasswordChecker testCheck = new PasswordChecker(6, 12);
+
+    boolean password = testCheck.isBannedPassword("password");
+    boolean nums = testCheck.isBannedPassword("123456");
+    boolean qwerty = testCheck.isBannedPassword("qwerty");
+    boolean qwerty2 = testCheck.isBannedPassword("QWERTY");
+    
+    boolean passwordNot = testCheck.isBannedPassword("123password123");
+    boolean numsNot = testCheck.isBannedPassword("1234567");
+
+    assertEquals(true, password);
+    assertEquals(true, nums);
+    assertEquals(true, qwerty);
+    assertEquals(true, qwerty2);
+
+    assertEquals(false, passwordNot);
+    assertEquals(false, numsNot);
+
+  }
+
 } 
