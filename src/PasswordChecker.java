@@ -65,8 +65,6 @@ public class PasswordChecker {
             char c = password.charAt(i);
             if (!Character.isLetterOrDigit(c)) {
                 return false;
-            } else {
-                return true;
             }
         }
         return true;
@@ -86,7 +84,7 @@ public class PasswordChecker {
     /**
      * Provides a default set of commonly used weak passwords.
      *
-     * @return A set of default banned passwordsh
+     * @return A set of default banned passwords
      */
     private Set<String> getDefaultBannedPasswords() {
         return new HashSet<>(Arrays.asList(

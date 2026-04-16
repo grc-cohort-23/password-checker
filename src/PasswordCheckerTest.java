@@ -1,4 +1,6 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +26,6 @@ public class PasswordCheckerTest {
     String actual = counter.describePasswordLength("waytoolongpassword");
     //Assert
     assertEquals("long", actual);
-  }
 
   @Test
   public void verifyPasswordMediumTest() {
@@ -38,20 +39,18 @@ public class PasswordCheckerTest {
   }
 
   //isAlphanumeric
-  @Test 
-  public void verifyIsAlphanumericTest(){
-    //Arrange
+  
+
+  //isBannedPassword
+    @Test 
+  public void verifyIfBannedPasswordTest(){
+    //Arrange 
     PasswordChecker counter = new PasswordChecker(6, 12);
     //Act
-    boolean actual = counter.isAlphanumeric("teamworkdrm");
+    boolean actual = counter.isBannedPassword("123456");
     //Assert
     assertEquals(true, actual);
   }
-
-
-
-  //isBannedPassword
-
 
 
 }
