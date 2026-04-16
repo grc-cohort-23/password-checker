@@ -18,6 +18,13 @@ public class PasswordCheckerTest {
     boolean actual = checker.isAlphanumeric("\\\\\\\\");
     assertFalse(actual);
   }
+
+  @Test
+  public void testAlphanumericEverywhere2(){
+    PasswordChecker checker = new PasswordChecker(0, 0);
+    boolean actual = checker.isAlphanumeric("works#");
+    assertEquals(false, actual);
+  }
   
 
 }
