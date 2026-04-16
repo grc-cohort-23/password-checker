@@ -52,5 +52,16 @@ public class PasswordCheckerTest {
     assertEquals(true, actual);
   }
 
+    @Test
+  public void verifyIsBannedWorksCaseSensitive() {
+    PasswordChecker passwordUtils = new PasswordChecker(6, 12);
+
+    String testPassword = "PASSWORD";
+    
+    assertTrue(passwordUtils.isBannedPassword(testPassword));
+
+  }
+
+
 
 }
