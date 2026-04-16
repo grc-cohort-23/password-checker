@@ -9,9 +9,11 @@ public class PasswordCheckerTest {
     // Arrange 
     PasswordChecker counter = new PasswordChecker(6,12);
     // Act
-  string actual = counter.describePasswordLength("123456");
+  String actual = counter.describePasswordLength("123456");
     // Assert
 
   }
+
+
 
 }
