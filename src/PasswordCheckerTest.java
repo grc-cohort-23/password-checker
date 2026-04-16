@@ -70,6 +70,24 @@ public class PasswordCheckerTest {
   }
 
   //isBannedPassword()
+  @Test
+  void testIsBannedPasswordOnList(){
+    //arrange
+    PasswordChecker describe = new PasswordChecker(5, 9);
+    //act
+    boolean actual = describe.isBannedPassword("password");
+    //assert
+    assertEquals(true, actual);
+  }
+  @Test
+  void testIsBannedPasswordOffList(){
+    //arrange
+    PasswordChecker describe = new PasswordChecker(5, 9);
+    //act
+    boolean actual = describe.isBannedPassword("helloHosea");
+    //assert
+    assertEquals(false, actual);
+  }
 
 
 }
