@@ -11,4 +11,14 @@ public class PasswordCheckerTest {
     String actual = passwordChecker.describePasswordLength(password);
     assertEquals("short", actual);
 }
+
+  @Test 
+  public void testPasswordLengthMedium() {
+    //Arrange 
+    PasswordChecker medium = new PasswordChecker(4, 6);
+    //Act 
+    String actual =  medium.describePasswordLength("lolzz");
+    //Assert
+    assertEquals("medium", actual);
+    }
 }
