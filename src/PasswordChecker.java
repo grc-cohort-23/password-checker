@@ -44,11 +44,15 @@ public class PasswordChecker {
      * @return "short", "medium", or "long"
      */
     public String describePasswordLength(String password) {
+        if (password.trim().length() == 0) {
+            return "short";
+        }
+
         int length = password.length();
 
-        if (length < shortThreshold) {
+        if (length <= shortThreshold) {
             return "short";
-        } else if (length < mediumThreshold) {
+        } else if (length <= mediumThreshold) {
             return "medium";
         }
         return "long";
@@ -61,12 +65,13 @@ public class PasswordChecker {
      * @return true if the password is alphanumeric, false otherwise
      */
     public boolean isAlphanumeric(String password) {
-        for (int i = 0; i < password.length() - 1; i++) {
+        if (password.trim() == "") {
+            return false;
+        }
+        for (int i = 0; i < password.length(); i++) {
             char c = password.charAt(i);
             if (!Character.isLetterOrDigit(c)) {
                 return false;
-            } else {
-                return true;
             }
         }
         return true;
@@ -80,6 +85,9 @@ public class PasswordChecker {
      * @return true if the password is banned, false otherwise
      */
     public boolean isBannedPassword(String password) {
+        if (password.trim().length() == 0) {
+            return false;
+        }
         return bannedPasswords.contains(password.toLowerCase());
     }
 

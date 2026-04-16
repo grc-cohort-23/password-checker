@@ -4,13 +4,13 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        PasswordChecker passwordUtils = new PasswordChecker(6, 12);
+        PasswordChecker passwordUtils = new PasswordChecker(7, 14);
 
         while (true) {
             System.out.println("Please enter a password (or type 'exit' to quit):");
             String password = scanner.nextLine();
 
-            if (password.equalsIgnoreCase("exit")) {
+            if (password.trim().equalsIgnoreCase("exit")) {
                 System.out.println("Goodbye!");
                 break;
             }
