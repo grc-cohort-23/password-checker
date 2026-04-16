@@ -60,4 +60,18 @@ public class PasswordCheckerTest {
     boolean actual = passwordUtils.isAlphanumeric("byebye@");
     assertTrue(actual == false);
   }
+
+  @Test
+  void testForBannedPassword() {
+    PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+    boolean actual = passwordUtils.isBannedPassword("password123");
+    assertTrue(actual == true);
+  }
+
+  @Test
+  void testForNotBannedPasswords() {
+     PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+     boolean actual = passwordUtils.isBannedPassword("helloworld");
+     assertTrue(actual == false);
+  }
 }
