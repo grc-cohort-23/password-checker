@@ -12,6 +12,15 @@ public class PasswordCheckerTest {
   }
 
   //describePasswordLength tests
+  @Test
+  public void verifyTooShort() {
+  PasswordChecker passwordUtils = new PasswordChecker(6, 12);
+  
+  String testPassword = "q";
+  testPassword = passwordUtils.describePasswordLength(testPassword);
+
+    assertEquals("short", testPassword);
+  }
 
   //isAlphanumeric
 
