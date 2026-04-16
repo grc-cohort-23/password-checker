@@ -45,7 +45,10 @@ public class PasswordChecker {
      */
     public String describePasswordLength(String password) {
         int length = password.length();
-
+        
+        if(length==0){
+            return "Empty Password";
+        }
         if (length < shortThreshold) {
             return "short";
         } else if (length < mediumThreshold) {
@@ -61,7 +64,12 @@ public class PasswordChecker {
      * @return true if the password is alphanumeric, false otherwise
      */
     public boolean isAlphanumeric(String password) {
-        for (int i = 0; i < password.length() - 1; i++) {
+        
+        if (password.contains(" ")) {
+            return false;
+        }
+
+        for (int i = 0; i < password.length(); i++) {
             char c = password.charAt(i);
             if (!Character.isLetterOrDigit(c)) {
                 return false;
