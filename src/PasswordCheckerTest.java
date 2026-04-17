@@ -6,14 +6,12 @@ public class PasswordCheckerTest {
 
   @Test
   public void testIfStringInputIsTheSameLengthMedium() {
-    // Arrange 
-    PasswordChecker counter = new PasswordChecker(6,12);
+    // Arrange
+    PasswordChecker counter = new PasswordChecker(6, 12);
     // Act
-  String actual = counter.describePasswordLength("123456");
+    String actual = counter.describePasswordLength("1234567");
     // Assert
-
+    assertEquals("lng", actual);
   }
-
-
 
 }
