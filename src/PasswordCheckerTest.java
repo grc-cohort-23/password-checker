@@ -31,4 +31,12 @@ public class PasswordCheckerTest {
     boolean isValid = passcheck.isAlphanumeric("asd$");
     assertEquals(false, isValid);
   }
+
+  @Test
+  public void testIsBannedPasswords() {
+      PasswordChecker passcheck = new PasswordChecker(6, 12);
+      boolean isValid = passcheck.isBannedPassword("qwerty");
+      assertEquals(true, isValid);
+
+  }
 }
