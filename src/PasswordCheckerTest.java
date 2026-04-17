@@ -1,9 +1,11 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 public class PasswordCheckerTest {
 
+  // Test describePasswordLength()
   @Test
   public void describePasswordLength_PasswordIs6Long_LengthMedium() {
     // Arrange 
@@ -14,6 +16,7 @@ public class PasswordCheckerTest {
     assertEquals("medium",actual);
   }
 
+  // Test describePasswordLength()
   @Test
   public void describePasswordLength_PasswordIs5Long_LengthShort() {
     // Arrange 
@@ -24,6 +27,7 @@ public class PasswordCheckerTest {
     assertEquals("short",actual);
   }
 
+  // Test describePasswordLength()
   @Test
   public void describePasswordLength_PasswordIs12Long_LengthLong() {
     // Arrange 
@@ -32,6 +36,18 @@ public class PasswordCheckerTest {
     String actual = counter.describePasswordLength("123456789abc");
     // Assert
     assertEquals("long",actual);
+  }
+
+
+  // Test isAlphanumeric()
+  @Test
+  public void isAlphanumeric_LettersAndNumbers_True() {
+    // Arrange 
+    PasswordChecker checker = new PasswordChecker(6,12);
+    // Act
+    boolean actual = checker.isAlphanumeric("1s1t4lph4Num3r1c");
+    // Assert
+    assertTrue(actual);
   }
 
 
