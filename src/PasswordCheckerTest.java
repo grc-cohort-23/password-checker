@@ -14,6 +14,26 @@ public class PasswordCheckerTest {
     assertEquals("medium",actual);
   }
 
+  @Test
+  public void describePasswordLength_PasswordIs5Long_LengthShort() {
+    // Arrange 
+    PasswordChecker counter = new PasswordChecker(6,12);
+    // Act
+    String actual = counter.describePasswordLength("12345");
+    // Assert
+    assertEquals("short",actual);
+  }
+
+  @Test
+  public void describePasswordLength_PasswordIs12Long_LengthLong() {
+    // Arrange 
+    PasswordChecker counter = new PasswordChecker(6,12);
+    // Act
+    String actual = counter.describePasswordLength("123456789abc");
+    // Assert
+    assertEquals("long",actual);
+  }
+
 
 
 }
