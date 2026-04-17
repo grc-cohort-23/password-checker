@@ -52,4 +52,11 @@ public class PasswordCheckerTest {
     boolean isBanned = passcheck.isBannedPassword("SuperCooler12345!");
     assertEquals(false, isBanned);
   }
+
+  @Test
+  public void testPassLengthExactShort() {
+    PasswordChecker passcheck = new PasswordChecker(3, 6);
+    String isShort = passcheck.describePasswordLength("dog");
+    assertEquals("short", isShort);
+  }
 }
