@@ -50,6 +50,17 @@ public class PasswordCheckerTest {
     assertTrue(actual);
   }
 
+  // Test isBannedPassword()
+  @Test
+  public void isBannedPassword_Password_True() {
+    // Arrange
+    PasswordChecker banner = new PasswordChecker(6,12);
+    // Act
+    boolean actual = banner.isBannedPassword("Password");
+    // Assert
+    assertTrue(actual);
+  }
+
 
 
 }
