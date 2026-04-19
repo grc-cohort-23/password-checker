@@ -38,13 +38,61 @@ public void testPasswordWithSpacesAtEnd() {
     assertEquals(false, result);
 }
 
+
+
 // constructor 2: Test to see if password is banned | should be
-@Test
-  public void TestForBannedPassword() {
-    // arrange
-      PasswordChecker passwordUtils = new PasswordChecker(6, 12);
-    // act and assert
-      assertEquals(true, passwordUtils.isBannedPassword("password"));
-      assertEquals(false, passwordUtils.isBannedPassword("Password"));
+
+ // Test to see if exact banned password is caught | should be banned
+    @Test
+    public void testIsBannedPasswordExactMatch() {
+        // Arrange
+        PasswordChecker checker = new PasswordChecker(6, 12);
+        // Act + Assert — "password" is in the default banned list
+        assertEquals(true, checker.isBannedPassword("password"));
     }
+    @Test
+    public void testIsBannedPasswordCaseInsensitive() {
+        // Arrange
+        PasswordChecker checker = new PasswordChecker(6, 12);
+        // Act n Assert 
+        assertEquals(true, checker.isBannedPassword("Password"));
+    }
+
+    // Test to see if a nonbanned password is allowed | should not be banned
+    @Test
+    public void testIsBannedPasswordNotBanned() {
+        // Arrange
+        PasswordChecker checker = new PasswordChecker(6, 12);
+        // Act n Assert 
+        assertEquals(false, checker.isBannedPassword("correctHorse99"));
+    }
+
+
+
+
+    // constructor 3: Test to see if password is valid | should be
+
+     @Test // Test to see if a valid password is accepted | should be valid
+    public void testDescribePasswordLengthShort() {
+        // Arrange
+        PasswordChecker checker = new PasswordChecker(6, 12);
+        String password = "hi";        // length 2 which is below short Threshold of 6
+        // Act
+        String result = checker.describePasswordLength(password);
+        // Assert
+        assertEquals("short", result);
+    }
+
+      @Test
+    public void testDescribePasswordLengthMedium() {
+        // Arrange
+        PasswordChecker checker = new PasswordChecker(6, 12);
+        String password = "hello1";   
+        // Act
+        String result = checker.describePasswordLength(password);
+        // Assert
+        assertEquals("medium", result);
+    }
+
+    // Test to see if a long password is described as "long" | should be long
 }
