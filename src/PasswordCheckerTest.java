@@ -36,4 +36,14 @@ public class PasswordCheckerTest {
       //Assert
       assertEquals("long", actual);
     }
+
+    @Test
+    public void isAlphanumericBlank(){
+      //Arrange
+      PasswordChecker blank = new PasswordChecker(4, 6);
+      //Act
+      boolean actual = blank.isAlphanumeric("   ");
+      //Assert
+      assertEquals(false, actual);
+    }
 }
