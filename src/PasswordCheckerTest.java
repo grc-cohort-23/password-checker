@@ -6,9 +6,14 @@ public class PasswordCheckerTest {
 
   @Test
   public void testPasswordLengthShort(){
+    //Arrange
     PasswordChecker passwordChecker = new PasswordChecker(4,5);
+
+    //Act
     String password = "abc";
     String actual = passwordChecker.describePasswordLength(password);
+
+    //Assert
     assertEquals("short", actual);
 }
 
