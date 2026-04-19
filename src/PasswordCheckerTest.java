@@ -5,10 +5,100 @@ import org.junit.jupiter.api.Test;
 public class PasswordCheckerTest {
 
   @Test
-  public void testDummy() {
-    // This test is used only to validate that your VS Code setup is working
-    // Delete this test after you have written your other tests
-    assertEquals(0, 0);
+  public void testPasswordLengthShort(){
+    //Arrange
+    PasswordChecker passwordChecker = new PasswordChecker(4,5);
+
+    //Act
+    String password = "abc";
+    String actual = passwordChecker.describePasswordLength(password);
+
+    //Assert
+    assertEquals("short", actual);
+}
+
+  @Test 
+  public void testPasswordLengthMedium() {
+    //Arrange 
+    PasswordChecker passwordChecker = new PasswordChecker(4, 6);
+    //Act 
+    String actual =  passwordChecker.describePasswordLength("lolzz");
+    //Assert
+    assertEquals("medium", actual);
+    }
+
+    @Test
+    public void testPasswordLengthLong() {
+      //Arrange
+      PasswordChecker passwordChecker = new PasswordChecker(4, 5);
+      //Act
+      String actual = passwordChecker.describePasswordLength("ThisIsALongPassword");
+      //Assert
+      assertEquals("long", actual);
+    }
+
+    @Test
+    public void isAlphanumericBlank(){
+      //Arrange
+      PasswordChecker passwordChecker = new PasswordChecker(4, 6);
+      //Act
+      boolean actual = passwordChecker.isAlphanumeric("   ");
+      //Assert
+      assertEquals(false, actual);
+    }
+
+    @Test
+    public void isAlphanumericFalse(){
+      //Arrange
+      PasswordChecker passwordChecker = new PasswordChecker(4,6);
+      //Act
+      boolean actual = passwordChecker.isAlphanumeric("_________");
+      //Assert
+      assertEquals(false,actual);
+    }
+    @Test 
+    public void isAlphanumericTrue(){
+      //Arrange 
+      PasswordChecker good = new PasswordChecker(4,6);
+      //Act 
+      boolean actual = good.isAlphanumeric("123abc");
+      //Assert 
+      assertEquals(true, actual);
   }
+  @Test
+  public void isBannedBlank(){
+    //Arrange
+    PasswordChecker blank = new PasswordChecker(4, 6);
+
+    //Act
+    boolean actual = blank.isBannedPassword(" ");
+
+    //Assert
+    assertEquals(false, actual);
+  }
+  @Test
+  public void isBannedTrue(){
+    //Arrange
+    PasswordChecker blank = new PasswordChecker(4, 6);
+
+    //Act
+    boolean actual = blank.isBannedPassword("password123");
+
+    //Assert
+    assertEquals(true, actual);
+  }
+  @Test
+  public void isBannedFalse(){
+    //Arrange
+    PasswordChecker blank = new PasswordChecker(4, 6);
+
+    //Act
+    boolean actual = blank.isBannedPassword("ilovegames");
+
+    //Assert
+    assertEquals(false, actual);
+  }
+
+  
 
 }
