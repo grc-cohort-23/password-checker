@@ -20,9 +20,9 @@ public class PasswordCheckerTest {
   @Test 
   public void testPasswordLengthMedium() {
     //Arrange 
-    PasswordChecker medium = new PasswordChecker(4, 6);
+    PasswordChecker passwordChecker = new PasswordChecker(4, 6);
     //Act 
-    String actual =  medium.describePasswordLength("lolzz");
+    String actual =  passwordChecker.describePasswordLength("lolzz");
     //Assert
     assertEquals("medium", actual);
     }
@@ -30,9 +30,9 @@ public class PasswordCheckerTest {
     @Test
     public void testPasswordLengthLong() {
       //Arrange
-      PasswordChecker longPassword = new PasswordChecker(4, 5);
+      PasswordChecker passwordChecker = new PasswordChecker(4, 5);
       //Act
-      String actual = longPassword.describePasswordLength("ThisIsALongPassword");
+      String actual = passwordChecker.describePasswordLength("ThisIsALongPassword");
       //Assert
       assertEquals("long", actual);
     }
@@ -40,10 +40,20 @@ public class PasswordCheckerTest {
     @Test
     public void isAlphanumericBlank(){
       //Arrange
-      PasswordChecker blank = new PasswordChecker(4, 6);
+      PasswordChecker passwordChecker = new PasswordChecker(4, 6);
       //Act
-      boolean actual = blank.isAlphanumeric("   ");
+      boolean actual = passwordChecker.isAlphanumeric("   ");
       //Assert
       assertEquals(false, actual);
+    }
+
+    @Test
+    public void isAlphanumericFalse(){
+      //Arrange
+      PasswordChecker passwordChecker = new PasswordChecker(4,6);
+      //Act
+      boolean actual = passwordChecker.isAlphanumeric("_________");
+      //Assert
+      assertEquals(false,actual);
     }
 }
