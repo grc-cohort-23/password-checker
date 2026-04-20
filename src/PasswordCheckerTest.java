@@ -1,7 +1,5 @@
 import static org.junit.Assert.*;
-
 import org.junit.jupiter.api.Test;
-
 import java.util.*;
 
 public class PasswordCheckerTest {
@@ -53,11 +51,24 @@ public class PasswordCheckerTest {
     PasswordChecker checker = new PasswordChecker(3, 7);
 
     //act
-    Boolean isFalse = checker.isAlphanumeric("ABC DEF");
+    Boolean isFalse = checker.isAlphanumeric("ABC@  DEF");
 
     //assert
-    assertFalse(isFalse);
+    assertFalse("contains space", isFalse);
   }
+  @Test
+  public void testIsAlphanumericContainSymbol(){
+    //arrange
+    PasswordChecker checker = new PasswordChecker(3, 7);
+
+    //act
+    Boolean answer = checker.isAlphanumeric("A@BC_DE#WF");
+
+    //assert
+    assertFalse(answer);
+  }
+
+
 
 //   @Test
 //   public void testDescribePasswordLength() {
