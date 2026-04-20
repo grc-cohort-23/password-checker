@@ -27,4 +27,15 @@ public class PasswordCheckerTest {
 
   }
 
+  @Test
+  public void testIsBannedPasswordNull(){
+    PasswordChecker checker3 = new PasswordChecker(2, 6);
+
+    Boolean isNull = checker3.isBannedPassword("");
+
+    assertFalse(isNull);
+
+
+  }
+
 }
