@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -48,6 +49,17 @@ public class PasswordCheckerTest {
     boolean actual = checker.isAlphanumeric("1s1t4lph4Num3r1c");
     // Assert
     assertTrue(actual);
+  }
+
+  // Test isAlphanumeric()
+  @Test
+  public void isAlphanumeric_LettersAndNumbers_False() {
+    // Arrange 
+    PasswordChecker checker = new PasswordChecker(6,12);
+    // Act
+    boolean actual = checker.isAlphanumeric("ihgsdfyhes@#$");
+    // Assert
+    assertFalse(actual);
   }
 
   // Test isBannedPassword()
