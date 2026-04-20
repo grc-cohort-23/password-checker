@@ -80,4 +80,13 @@ public class PasswordCheckerTest {
     assertEquals("medium", actual);
   }
 
+  @Test 
+  public void testDescribePasswordLengthShort(){
+    PasswordChecker checker = new PasswordChecker(6, 9);
+
+    String actual = checker.describePasswordLength("pop");
+
+    assertEquals("short", actual);
+  }
+
 }
