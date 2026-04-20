@@ -6,7 +6,6 @@ public class PasswordChecker {
     private int shortThreshold;
     private int mediumThreshold;
     private Set<String> bannedPasswords;
-
     /**
      * Constructor that allows setting custom thresholds for short and medium password lengths,
      * and merges a set of custom banned passwords with the default banned passwords.
