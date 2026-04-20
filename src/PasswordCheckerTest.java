@@ -19,9 +19,9 @@ public class PasswordCheckerTest {
   }
   @Test
   public void testIsBannedPasswordFalse(){
-    PasswordChecker checker2 = new PasswordChecker(4 , 9);
+    PasswordChecker checker = new PasswordChecker(4 , 9);
 
-    Boolean expected = checker2.isBannedPassword("howdy");
+    Boolean expected = checker.isBannedPassword("howdy");
 
     assertFalse(expected);
 
@@ -29,9 +29,9 @@ public class PasswordCheckerTest {
 
   @Test
   public void testIsBannedPasswordNull(){
-    PasswordChecker checker3 = new PasswordChecker(2, 6);
+    PasswordChecker checker = new PasswordChecker(2, 6);
 
-    Boolean isNull = checker3.isBannedPassword("");
+    Boolean isNull = checker.isBannedPassword("");
 
     assertTrue(isNull);
 
@@ -40,11 +40,32 @@ public class PasswordCheckerTest {
   @Test 
   public void testIsAlphanumericTrue(){
     //arrange 
-    PasswordChecker checker4 = new PasswordChecker(2,8);
+    PasswordChecker checker = new PasswordChecker(2,8);
     //act
-    Boolean isTrue = checker4.isAlphanumeric("Ab23cd45");
+    Boolean isTrue = checker.isAlphanumeric("Ab23cd45");
     //assert
     assertTrue(isTrue);
   }
+
+  @Test
+  public void testIsAlphanumericFalse(){
+    //arrange
+    PasswordChecker checker = new PasswordChecker(3, 7);
+
+    //act
+    Boolean isFalse = checker.isAlphanumeric("ABC DEF");
+
+    //assert
+    assertFalse(isFalse);
+  }
+
+//   @Test
+//   public void testDescribePasswordLength() {
+//     //arrange
+
+//     //act
+
+//     //assert
+//   }
 
 }
