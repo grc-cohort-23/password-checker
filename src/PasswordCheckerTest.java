@@ -60,6 +60,47 @@ public class PasswordCheckerTest {
       // Assert
       assertTrue(result);
     }
+    
+    //test for isBanned()
+    @Test
+    void testBannedPassword() {
+      // Arrange
+      PasswordChecker checker = new PasswordChecker (6,12);
+      String password = "password123";
+
+      // Act
+      boolean result = checker.isBannedPassword(password);
+
+      // Assert
+      assertTrue(result);
+    }
+
+    @Test
+    void testBannedPasswordUppercase() {
+      // Arrange
+      PasswordChecker checker = new PasswordChecker(6,12);
+      String password = "PASSWORD123";
+
+      // Act
+      boolean result = checker.isBannedPassword(password);
+
+      // Assert
+      assertTrue(result);
+    }
+
+    @Test
+    void testNotBannedPassword() {
+      //Arrange
+      PasswordChecker checker = new PasswordChecker(6,12);
+      String password = "Hello12345";
+      
+      // Act
+      boolean result = checker.isBannedPassword(password);
+      
+      // Assert
+      assertFalse(result);
+
+    }
 
 }
   
