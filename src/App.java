@@ -9,7 +9,6 @@ public class App {
         while (true) {
             System.out.println("Please enter a password (or type 'exit' to quit):");
             String password = scanner.nextLine();
-
             if (password.equalsIgnoreCase("exit")) {
                 System.out.println("Goodbye!");
                 break;

@@ -65,8 +65,6 @@ public class PasswordChecker {
             char c = password.charAt(i);
             if (!Character.isLetterOrDigit(c)) {
                 return false;
-            } else {
-                return true;
             }
         }
         return true;
@@ -90,7 +88,7 @@ public class PasswordChecker {
      */
     private Set<String> getDefaultBannedPasswords() {
         return new HashSet<>(Arrays.asList(
-            "password123", "123456", "qwerty", "letmein", "password", "hello"
+            "password123", "123456", "qwerty", "letmein", "password", "hello", "" //added "" empty string handler rather than if empty statement
         ));
     }
 }
