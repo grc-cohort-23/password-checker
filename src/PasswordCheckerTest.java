@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 
 public class PasswordCheckerTest {
 
+  // Testing describePasswordLength
   @Test
   public void testDescribePasswordLengthEmptyString() {
-    String password = "";
     PasswordChecker checker = new PasswordChecker(6, 12);
-    String actual = checker.describePasswordLength(password);
+    String actual = checker.describePasswordLength("");
     assertEquals("short", actual);
   }
 
@@ -20,6 +20,14 @@ public class PasswordCheckerTest {
     String actual  = checker.describePasswordLength("helloo");
     assertEquals("medium", actual);
   }
+
+  @Test
+  public void testDescribePasswordLongLength(){
+    PasswordChecker checker = new PasswordChecker(6, 12);
+    String actual  = checker.describePasswordLength("iamironman!1");
+    assertEquals("long", actual);
+  }
+
   // Testing isAlphaNumeric
   @Test
   public void testIsAlphanumericFalseWithExclamationMark(){
@@ -27,5 +35,13 @@ public class PasswordCheckerTest {
     Boolean actual = checker.isAlphanumeric("hello!!");
     assertFalse(actual);
   }
+
+  @Test
+  public void testIsAlphanumericAccentedLetter(){
+    PasswordChecker checker = new PasswordChecker(6, 12);
+    Boolean actual = checker.isAlphanumeric("Pokémon");
+    assertTrue(actual);
+  }
+  
   
 }
