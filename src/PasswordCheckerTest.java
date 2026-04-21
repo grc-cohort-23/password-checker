@@ -35,5 +35,16 @@ public class PasswordCheckerTest {
       assertTrue(result);
     }
 
-    
+    @Test 
+    void testDescribePasswordLengthForLongPasswords() {
+      //Arrange
+      String expected = "long";
+      PasswordChecker checker = new PasswordChecker(5, 10);
+      //act
+      String actual = checker.describePasswordLength("password9876543210");
+      //Assert
+      assertEquals(expected, actual);
+
+
+    }
 }
