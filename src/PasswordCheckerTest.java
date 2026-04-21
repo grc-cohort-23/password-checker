@@ -95,4 +95,14 @@ public void testPasswordWithSpacesAtEnd() {
     }
 
     // Test to see if a long password is described as "long" | should be long
+    @Test
+    public void testDescribePasswordLengthLong() {
+        // Arrange
+        PasswordChecker checker = new PasswordChecker(6, 12);
+        String password = "Iamaverysuperduperlongpwhehe";   
+        // Act
+        String result = checker.describePasswordLength(password);
+        // Assert
+        assertEquals("long", result);   
+}
 }
