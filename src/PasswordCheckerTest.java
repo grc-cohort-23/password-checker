@@ -1,14 +1,18 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.Test;
 
 public class PasswordCheckerTest {
 
   @Test
-  public void testDummy() {
-    // This test is used only to validate that your VS Code setup is working
-    // Delete this test after you have written your other tests
-    assertEquals(0, 0);
-  }
+    void testIsAlphanumeric_ReturnsFalseForSpecialCharacters() {
+        // Arrange
+        PasswordChecker checker = new PasswordChecker(5, 10);
+        // Act
+        boolean result = checker.isAlphanumeric("pass!word");
+        // Assert
+        assertFalse(result);
+    }
 
 }
