@@ -2,6 +2,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
 public class PasswordCheckerTest {
@@ -39,8 +42,17 @@ public class PasswordCheckerTest {
   @Test
   public void testIsAlphanumericAccentedLetter(){
     PasswordChecker checker = new PasswordChecker(6, 12);
-    Boolean actual = checker.isAlphanumeric("Pokémon");
+    boolean actual = checker.isAlphanumeric("Pokémon");
     assertTrue(actual);
+  }
+
+  @Test 
+  public void testIsAlphanumericOnlyNumbers(){
+      PasswordChecker checker = new PasswordChecker(6, 12);
+      Boolean actual = checker.isAlphanumeric("1234567");
+      assertTrue(actual);
+
+
   }
   
   // Testing isBannedPassword
@@ -57,5 +69,12 @@ public class PasswordCheckerTest {
     PasswordChecker checker = new PasswordChecker(6, 12);
     Boolean actual = checker.isBannedPassword("PASSWORD");
     assertTrue(actual);
+  }
+  @Test
+    public void testIsBannedPasswordCustom(){
+      Set<String> custom = new HashSet<>();
+      custom.add("jessh123");
+      PasswordChecker checker = new PasswordChecker(6, 12, custom);
+      assertTrue(checker.isBannedPassword("jessh123"));
   }
 }
