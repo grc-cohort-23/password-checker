@@ -1,4 +1,6 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,4 +20,12 @@ public class PasswordCheckerTest {
     String actual  = checker.describePasswordLength("helloo");
     assertEquals("medium", actual);
   }
+  // Testing isAlphaNumeric
+  @Test
+  public void testIsAlphanumericFalseWithExclamationMark(){
+    PasswordChecker checker = new PasswordChecker(6, 12);
+    Boolean actual = checker.isAlphanumeric("hello!!");
+    assertFalse(actual);
+  }
+  
 }
