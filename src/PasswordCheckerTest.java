@@ -1,14 +1,101 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
 public class PasswordCheckerTest {
 
   @Test
-  public void testDummy() {
-    // This test is used only to validate that your VS Code setup is working
-    // Delete this test after you have written your other tests
-    assertEquals(0, 0);
-  }
+    void testIsAlphanumeric_ReturnsFalseForSpecialCharacters() {
+        // Arrange
+        PasswordChecker checker = new PasswordChecker(5, 10);
+        // Act
+        boolean result = checker.isAlphanumeric("pass!word");
+        // Assert
+        assertFalse(result);
+    }
+  @Test
+    void testIsAlphanumeric_ReturnsFalseForSpaces() {
+      // Arrange
+      PasswordChecker checker = new PasswordChecker(5, 10);
+      // Act
+      boolean result = checker.isAlphanumeric("pass word");
+      // Assert
+      assertFalse(result);
+    }
 
+
+    @Test 
+    void testIsAlphaNumeric_ReturnsTrueForValidPassword() {
+      //arrange
+      PasswordChecker checker = new PasswordChecker(5, 10);
+      //act
+      boolean result = checker.isAlphanumeric("passwords987");
+      //assert
+      assertTrue(result);
+    }
+
+    @Test 
+    void testDescribePasswordLengthForLongPasswords() {
+      //Arrange
+      String expected = "long";
+      PasswordChecker checker = new PasswordChecker(5, 10);
+      //act
+      String actual = checker.describePasswordLength("password9876543210");
+      //Assert
+      assertEquals(expected, actual);
+
+
+    }
+    @Test
+    void testDescribePasswordLengthForMediumPasswords() {
+      // Arrange
+      String expected = "medium";
+      PasswordChecker checker = new PasswordChecker(5, 10);
+      // Act
+      String actual = checker.describePasswordLength("password");
+      // Assert
+      assertEquals(expected, actual);
+    }
+    @Test
+    void testDescribePasswordLengthForShortPasswords() {
+      // Arrange
+      String expected = "short";
+      PasswordChecker checker = new PasswordChecker(5, 10);
+      // Act
+      String actual = checker.describePasswordLength("pas");
+      // Assert
+      assertEquals(expected, actual);
+    }
+
+    @Test 
+    void testIsBannedPasswordsForBannedPassword() {
+      //arrange
+      PasswordChecker checker = new PasswordChecker(5, 10);
+      //act
+      boolean result = checker.isBannedPassword("123456");
+      //Assert
+      assertTrue(result);
+
+
+    }
+    @Test 
+    void testIsBannedPasswordsForNonBannedPassword() {
+      //Arrange
+      PasswordChecker checker = new PasswordChecker(5, 10);
+      //Act
+      boolean result = checker.isBannedPassword("NotBannedPassword");
+
+      //Assert
+      assertFalse(result);
+    }
+    @Test
+    void testIsBannedPasswordsForExtraCharacters() {
+      // Arrange
+      PasswordChecker checker = new PasswordChecker(5, 10);
+      // Act
+      boolean result = checker.isBannedPassword("password123456");
+      // Assert
+      assertFalse(result);
+    }
 }
