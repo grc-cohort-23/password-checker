@@ -43,5 +43,19 @@ public class PasswordCheckerTest {
     assertTrue(actual);
   }
   
-  
+  // Testing isBannedPassword
+
+  @Test
+  public void testIsBannedPasswordTwoCombined(){
+    PasswordChecker checker = new PasswordChecker(6, 12);
+    Boolean actual = checker.isBannedPassword("password123456");
+    assertFalse(actual);
+  }
+
+  @Test
+  public void testIsBannedPasswordAllCaps(){
+    PasswordChecker checker = new PasswordChecker(6, 12);
+    Boolean actual = checker.isBannedPassword("PASSWORD");
+    assertTrue(actual);
+  }
 }
